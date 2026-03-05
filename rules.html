@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rules & Prizes — Encore Madness '26 | Gap Mid Atlantic</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --gap-blue: #1B3A6B;
+            --red: #C8102E;
+            --gold: #F5A623;
+            --white: #FFFFFF;
+            --muted: rgba(255, 255, 255, 0.45);
+            --bg: #080f1e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--bg);
+            color: var(--white);
+            min-height: 100vh;
+            background-image:
+                radial-gradient(ellipse at 20% 0%, rgba(27, 58, 107, 0.5) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 100%, rgba(200, 16, 46, 0.06) 0%, transparent 50%);
+        }
+
+        header {
+            background: linear-gradient(135deg, #0d1e3a 0%, var(--gap-blue) 100%);
+            border-bottom: 3px solid;
+            border-image: linear-gradient(90deg, var(--gap-blue) 0%, var(--red) 100%) 1;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .h-logo {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            letter-spacing: 4px;
+            color: var(--white);
+            border: 2px solid var(--white);
+            padding: 3px 8px;
+        }
+
+        .h-title {
+            font-family: 'Barlow Condensed', sans-serif;
+        }
+
+        .h-title h1 {
+            font-weight: 900;
+            font-size: 24px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .h-title .sub {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: rgba(255, 255, 255, 0.45);
+            text-transform: uppercase;
+            margin-top: 3px;
+        }
+
+        .h-back {
+            margin-left: auto;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 5px 12px;
+            border-radius: 2px;
+            transition: all 0.2s;
+        }
+
+        .h-back:hover {
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        main {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+        }
+
+        .page-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 900;
+            font-size: 40px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--white);
+            margin-bottom: 6px;
+        }
+
+        .page-sub {
+            font-size: 12px;
+            color: var(--muted);
+            letter-spacing: 1.5px;
+            margin-bottom: 48px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section p,
+        .section li {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .section ul {
+            padding-left: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        th {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
+            text-align: left;
+            padding: 8px 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        td {
+            padding: 11px 10px;
+            color: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            vertical-align: top;
+        }
+
+        td strong {
+            color: var(--white);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .callout {
+            background: rgba(245, 166, 35, 0.08);
+            border: 1px solid rgba(245, 166, 35, 0.25);
+            border-left: 3px solid var(--gold);
+            border-radius: 2px;
+            padding: 12px 16px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.7;
+            margin-top: 12px;
+        }
+
+        .callout strong {
+            color: var(--gold);
+        }
+
+        .alert-box {
+            background: rgba(200, 16, 46, 0.1);
+            border: 1px solid rgba(200, 16, 46, 0.3);
+            border-left: 3px solid var(--red);
+            border-radius: 2px;
+            padding: 12px 16px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin-top: 12px;
+        }
+
+        .alert-box strong {
+            color: #ff7070;
+        }
+
+        .format-box {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            padding: 14px 18px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 2;
+            margin-top: 12px;
+        }
+
+        .prizes-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        @media (max-width: 640px) {
+            .prizes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                padding: 16px 20px;
+            }
+
+            .page-title {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .prizes-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .prize-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 4px;
+            padding: 16px 18px;
+        }
+
+        .prize-card .icon {
+            font-size: 24px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .prize-card .name {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: 16px;
+            color: var(--white);
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .prize-card .who {
+            font-size: 11px;
+            color: var(--muted);
+            display: block;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .prize-card .award {
+            font-size: 15px;
+            color: var(--gold);
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+        }
+
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .timeline {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .week-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 3px;
+            padding: 14px 16px;
+            text-align: center;
+        }
+
+        .week-card .wk {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 900;
+            font-size: 18px;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .week-card .dates {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .week-card .notes {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 6px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 24px 20px;
+            font-size: 11px;
+            color: var(--muted);
+            letter-spacing: 1px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="h-logo">GAP</div>
+        <div class="h-title">
+            <h1>Encore Madness '26</h1>
+            <div class="sub">GAP INC. &middot; MID ATLANTIC &middot; Rules &amp; Prizes</div>
+        </div>
+        <a class="h-back" href="index.html">&larr; Back to Dashboard</a>
+    </header>
+
+    <main>
+        <div class="page-title">📋 Rules &amp; Prizes</div>
+        <div class="page-sub">GAP INC. MID ATLANTIC &middot; MARCH 8 &ndash; 31 &middot; 3 WEEKS &middot; POINTS
+            ACCUMULATE ALL MONTH</div>
+
+        <div class="section">
+            <h2>📅 Competition Timeline</h2>
+            <div class="timeline">
+                <div class="week-card">
+                    <span class="wk">Week 1</span>
+                    <div class="dates">March 8 &ndash; 14</div>
+                    <div class="notes">Seeding week &mdash; Week 1 rates set rivalry matchups</div>
+                </div>
+                <div class="week-card">
+                    <span class="wk">Week 2</span>
+                    <div class="dates">March 15 &ndash; 21</div>
+                    <div class="notes">Rivalries in full effect &mdash; re-seeded from Week 1</div>
+                </div>
+                <div class="week-card">
+                    <span class="wk">Week 3</span>
+                    <div class="dates">March 22 &ndash; 31</div>
+                    <div class="notes">Final push &mdash; cumulative winner takes all</div>
+                </div>
+            </div>
+            <div class="callout" style="margin-top:14px">Points <strong>accumulate across all 3 weeks.</strong> Each
+                week's data is added to the running total. The competition closes March 31.</div>
+        </div>
+
+        <div class="section">
+            <h2>🎯 The Goal</h2>
+            <p><strong>2.2% strike rate</strong> &mdash; 1 card opened per 45.4 transactions. This is the only threshold
+                that matters. Everything else is built on top of it.</p>
+        </div>
+
+        <div class="section">
+            <h2>📲 Zipline Verification &mdash; Required</h2>
+            <p>Every card must be shouted out in the <strong>Zipline</strong> to earn bonus points. Each post must
+                include:</p>
+            <ul>
+                <li>Customer first name</li>
+                <li>Type of card <em>(Gap, Old Navy, Athleta, Banana Republic)</em></li>
+                <li>Whether it was an <strong>Order In Store</strong> transaction</li>
+                <li>Number of units in the basket</li>
+            </ul>
+            <div class="format-box">
+                <strong style="color:var(--gold)">Suggested format:</strong><br>
+                &ldquo;🏀 Sarah &mdash; Gap card, Order In Store, 4 units &mdash; SLAM DUNK 💥&rdquo;<br>
+                &ldquo;⭐ Mike &mdash; Banana card, 3 units &mdash; AND ONE&rdquo;<br>
+                &ldquo;✅ Jordan &mdash; Old Navy card&rdquo;
+            </div>
+            <div class="alert-box">
+                <strong>⚠️ No post = no bonus.</strong> Cards without a Zipline shoutout earn base points only. No Slam
+                Dunk or And-One bonus without the post. Associates post. GMs make sure they do.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🏙️ Store Points</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Card opened</td>
+                        <td><strong>1 pt</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Win your weekly rivalry matchup</td>
+                        <td><strong>+5 pts</strong> added to cumulative total</td>
+                    </tr>
+                    <tr>
+                        <td>&times;1.5 Floor Bonus</td>
+                        <td>Applied to <strong>all cards</strong> when 100% of associates participate that week</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="callout">Example: 25 cards &times; 1.5 Floor Bonus = <strong>37.5 pts</strong>. Win the rivalry
+                that week = <strong>42.5 pts total</strong>.</div>
+        </div>
+
+        <div class="section">
+            <h2>⭐ Associate Points &mdash; District MVP Race</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Card opened</td>
+                        <td><strong>1 pt</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>And-One</strong> &mdash; 3+ item basket + card (Zipline required)</td>
+                        <td><strong>2 pts</strong> total</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Slam Dunk</strong> &mdash; Order In Store + card opened (Zipline required)</td>
+                        <td><strong>3 pts</strong> total</td>
+                    </tr>
+                    <tr>
+                        <td>Hit 2.2%+ personal rate for the week</td>
+                        <td><strong>+5 pt weekly bonus</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="margin-top:12px;font-size:13px;color:var(--muted)">Associate points are flat &mdash; the Floor
+                Bonus does not apply. Individual performance is measured clean regardless of store. Points accumulate
+                all 3 weeks. Top associate after Week 3 = <strong style="color:var(--gold)">District MVP</strong>.</p>
+        </div>
+
+        <div class="section">
+            <h2>🏆 Bracket Structure</h2>
+            <p><strong>Championship Bracket</strong> &mdash; Top 5 stores by cumulative points. Re-seeded each week by
+                cumulative total.</p>
+            <p><strong>NIT Redemption Track</strong> &mdash; Bottom 5 stores. Any NIT store that crosses 2.2% by end of
+                Week 3 earns team lunch on Gap. Multiple stores can win.</p>
+            <p><strong>Weekly Rivalries</strong> &mdash; 5 head-to-head matchups per week. Week 1 seeded by opening rate
+                (1v10, 2v9, 3v8, 4v7, 5v6). Re-seeded by cumulative points for Weeks 2 and 3. <strong>Winning your
+                    matchup = +5 pts</strong>.</p>
+        </div>
+
+        <div class="section">
+            <h2>🏅 GM Leadership Floor</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Criteria</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Leadership Floor Active</strong></td>
+                        <td>GM drives &ge;90% associate participation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>100% Floor</strong> 🥇</td>
+                        <td>All associates participating &rarr; triggers <strong>&times;1.5 store multiplier</strong>
+                            for that week</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="margin-top:12px;font-size:13px;color:var(--muted)">The Floor Bonus is recalculated weekly. A store
+                must maintain 100% participation to keep the multiplier each week.</p>
+        </div>
+
+        <div class="section">
+            <h2>🎁 Prizes</h2>
+            <div class="prizes-grid">
+                <div class="prize-card">
+                    <span class="icon">🏆</span>
+                    <span class="name">District Champion</span>
+                    <span class="who">#1 store by cumulative points after Week 3</span>
+                    <span class="award">Trophy</span>
+                </div>
+                <div class="prize-card">
+                    <span class="icon">🥈</span>
+                    <span class="name">Runner-Up</span>
+                    <span class="who">#2 store after Week 3</span>
+                    <span class="award">Gift card for the team</span>
+                </div>
+                <div class="prize-card">
+                    <span class="icon">🍽️</span>
+                    <span class="name">NIT Survivor</span>
+                    <span class="who">Any NIT store crossing 2.2% by Week 3</span>
+                    <span class="award">Team lunch on Gap</span>
+                </div>
+                <div class="prize-card">
+                    <span class="icon">🎯</span>
+                    <span class="name">District MVP</span>
+                    <span class="who">Top individual associate by cumulative points</span>
+                    <span class="award">$50 gift card</span>
+                </div>
+                <div class="prize-card">
+                    <span class="icon">⭐</span>
+                    <span class="name">The Encore 2.2% Club</span>
+                    <span class="who">Associates hitting 2.2%+ personal rate</span>
+                    <span class="award">Badge + district recognition</span>
+                </div>
+                <div class="prize-card">
+                    <span class="icon">🏅</span>
+                    <span class="name">GM Leadership Floor</span>
+                    <span class="who">GMs at 100% associate participation</span>
+                    <span class="award">District call shoutout + &times;1.5 store multiplier</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        Gap Inc. Encore Credit Card Program &middot; Gap Mid Atlantic &middot; Internal Use Only
+    </footer>
+</body>
+
+</html>

@@ -1811,6 +1811,257 @@
         text-align: left;
       }
     }
+
+    /* ── RULES MODAL ── */
+    .rules-btn {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 5px 12px;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background 0.2s, color 0.2s;
+      flex-shrink: 0;
+    }
+
+    .rules-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: var(--white);
+    }
+
+    .rules-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 10, 20, 0.93);
+      z-index: 500;
+      overflow-y: auto;
+      padding: 40px 20px;
+    }
+
+    .rules-overlay.open {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .rules-modal {
+      background: #0d1e3a;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-top: 3px solid var(--red);
+      border-radius: 4px;
+      max-width: 740px;
+      width: 100%;
+      padding: 40px 44px;
+      position: relative;
+    }
+
+    @media (max-width: 768px) {
+      .rules-modal {
+        padding: 28px 20px;
+      }
+
+      .rules-overlay {
+        padding: 16px 12px;
+      }
+    }
+
+    .rules-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      font-size: 24px;
+      color: rgba(255, 255, 255, 0.35);
+      cursor: pointer;
+      background: none;
+      border: none;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+
+    .rules-close:hover {
+      color: var(--white);
+    }
+
+    .rules-modal h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 28px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .rules-sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 28px;
+      letter-spacing: 1px;
+    }
+
+    .rules-section {
+      margin-bottom: 26px;
+    }
+
+    .rules-section h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .rules-section p,
+    .rules-section li {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+      margin-bottom: 5px;
+    }
+
+    .rules-section ul {
+      padding-left: 18px;
+    }
+
+    .rules-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      font-size: 13px;
+    }
+
+    .rules-table th {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: left;
+      padding: 6px 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .rules-table td {
+      padding: 9px 8px;
+      color: rgba(255, 255, 255, 0.8);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      vertical-align: top;
+    }
+
+    .rules-table td strong {
+      color: var(--white);
+    }
+
+    .rules-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .rules-callout {
+      background: rgba(245, 166, 35, 0.08);
+      border: 1px solid rgba(245, 166, 35, 0.25);
+      border-left: 3px solid var(--gold);
+      border-radius: 2px;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.6;
+      margin-top: 10px;
+    }
+
+    .rules-callout strong {
+      color: var(--gold);
+    }
+
+    .rules-alert {
+      background: rgba(200, 16, 46, 0.1);
+      border: 1px solid rgba(200, 16, 46, 0.3);
+      border-left: 3px solid var(--red);
+      border-radius: 2px;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.6;
+      margin-top: 10px;
+    }
+
+    .rules-alert strong {
+      color: #ff7070;
+    }
+
+    .rules-prizes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 540px) {
+      .rules-prizes-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .rules-prize-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 3px;
+      padding: 12px 14px;
+    }
+
+    .prize-icon {
+      font-size: 20px;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .prize-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      color: var(--white);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .prize-who {
+      font-size: 11px;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .prize-award {
+      font-size: 13px;
+      color: var(--gold);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+    }
+
+    .rules-footer-link {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 11px;
+    }
+
+    .rules-footer-link a {
+      color: rgba(255, 255, 255, 0.35);
+      text-decoration: none;
+    }
+
+    .rules-footer-link a:hover {
+      color: var(--white);
+    }
   </style>
 </head>
 
@@ -1943,6 +2194,8 @@
         </div>
       </div>
       <div class="live-badge">● LIVE</div>
+      <button class="rules-btn" onclick="document.getElementById('rulesOverlay').classList.add('open')">&#9432; Rules
+        &amp; Prizes</button>
     </div>
     <div class="header-stats" id="header-stats"></div>
   </header>
@@ -2364,6 +2617,136 @@
       document.getElementById('gm-floor').innerHTML = html;
     }
   </script>
+
+  <div class="rules-overlay" id="rulesOverlay" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="rules-modal">
+      <button class="rules-close"
+        onclick="document.getElementById('rulesOverlay').classList.remove('open')">&times;</button>
+      <h1>🏀 Encore Madness '26</h1>
+      <p class="rules-sub">GAP INC. MID ATLANTIC &middot; MARCH 8 &ndash; 31 &middot; 3 WEEKS &middot; POINTS ACCUMULATE
+        ALL MONTH</p>
+
+      <div class="rules-section">
+        <h2>📲 Zipline Verification &mdash; Required</h2>
+        <p>Every card must be shouted out in the <strong>Zipline</strong> to earn bonus points. Each post must include:
+        </p>
+        <ul>
+          <li>Customer first name</li>
+          <li>Type of card <em>(Gap, Old Navy, Athleta, Banana Republic)</em></li>
+          <li>Whether it was an <strong>Order In Store</strong> transaction</li>
+          <li>Number of units in the basket</li>
+        </ul>
+        <div class="rules-callout">
+          <strong>Suggested format:</strong><br>
+          &ldquo;🏀 Sarah &mdash; Gap card, Order In Store, 4 units &mdash; SLAM DUNK 💥&rdquo;<br>
+          &ldquo;⭐ Mike &mdash; Banana card, 3 units &mdash; AND ONE&rdquo;<br>
+          &ldquo;✅ Jordan &mdash; Old Navy card&rdquo;
+        </div>
+        <div class="rules-alert">
+          <strong>⚠️ No post = no bonus.</strong> Cards without a Zipline shoutout earn base points only. No Slam Dunk
+          or And-One bonus without the post. Associates post. GMs make sure they do.
+        </div>
+      </div>
+
+      <div class="rules-section">
+        <h2>🏙️ Store Points</h2>
+        <table class="rules-table">
+          <thead>
+            <tr>
+              <th>Action</th>
+              <th>Points</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Card opened</td>
+              <td><strong>1 pt</strong></td>
+            </tr>
+            <tr>
+              <td>Win your weekly rivalry matchup</td>
+              <td><strong>+5 pts</strong> added to cumulative total</td>
+            </tr>
+            <tr>
+              <td>&times;1.5 Floor Bonus</td>
+              <td>Applied to <strong>all cards</strong> when 100% of associates participate that week</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="rules-callout">Example: 25 cards &times; 1.5 (100% floor) = <strong>37.5 pts</strong>. Win the
+          rivalry that week = <strong>42.5 pts total</strong>.</div>
+      </div>
+
+      <div class="rules-section">
+        <h2>⭐ Associate Points &mdash; District MVP Race</h2>
+        <table class="rules-table">
+          <thead>
+            <tr>
+              <th>Action</th>
+              <th>Points</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Card opened</td>
+              <td><strong>1 pt</strong></td>
+            </tr>
+            <tr>
+              <td><strong>And-One</strong> &mdash; 3+ item basket + card (Zipline required)</td>
+              <td><strong>2 pts</strong> total</td>
+            </tr>
+            <tr>
+              <td><strong>Slam Dunk</strong> &mdash; Order In Store + card (Zipline required)</td>
+              <td><strong>3 pts</strong> total</td>
+            </tr>
+            <tr>
+              <td>Hit 2.2%+ personal rate for the week</td>
+              <td><strong>+5 pt weekly bonus</strong></td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="margin-top:10px;font-size:12px;color:var(--muted)">Associate points are flat &mdash; no floor bonus
+          applies. Points accumulate across all 3 weeks. Top associate = <strong style="color:var(--gold)">District
+            MVP</strong>.</p>
+      </div>
+
+      <div class="rules-section">
+        <h2>🏆 Bracket Structure</h2>
+        <p><strong>Championship Bracket</strong> &mdash; Top 5 stores by cumulative points. Re-seeded each week.</p>
+        <p><strong>NIT Redemption Track</strong> &mdash; Bottom 5 stores. Any NIT store that crosses 2.2% by end of Week
+          3 wins the team lunch &mdash; multiple stores can win.</p>
+        <p><strong>Weekly Rivalries</strong> &mdash; 5 head-to-head store matchups per week. Week 1 seeded by opening
+          rate (1v10, 2v9, 3v8, 4v7, 5v6). Winning your matchup = <strong>+5 pts</strong>.</p>
+      </div>
+
+      <div class="rules-section">
+        <h2>🏅 Prizes</h2>
+        <div class="rules-prizes-grid">
+          <div class="rules-prize-card"><span class="prize-icon">🏆</span><span class="prize-name">District
+              Champion</span><span class="prize-who">#1 store &mdash; cumulative points after Week 3</span><span
+              class="prize-award">Trophy</span></div>
+          <div class="rules-prize-card"><span class="prize-icon">🥈</span><span class="prize-name">Runner-Up</span><span
+              class="prize-who">#2 store after Week 3</span><span class="prize-award">Gift card for the team</span>
+          </div>
+          <div class="rules-prize-card"><span class="prize-icon">🍽️</span><span class="prize-name">NIT
+              Survivor</span><span class="prize-who">Any NIT store crossing 2.2% by Week 3</span><span
+              class="prize-award">Team lunch on Gap</span></div>
+          <div class="rules-prize-card"><span class="prize-icon">🎯</span><span class="prize-name">District
+              MVP</span><span class="prize-who">Top individual associate by cumulative points</span><span
+              class="prize-award">$50 gift card</span></div>
+          <div class="rules-prize-card"><span class="prize-icon">⭐</span><span class="prize-name">The Encore 2.2%
+              Club</span><span class="prize-who">Associates hitting 2.2%+ personal rate</span><span
+              class="prize-award">Badge + district recognition</span></div>
+          <div class="rules-prize-card"><span class="prize-icon">🏅</span><span class="prize-name">GM Leadership
+              Floor</span><span class="prize-who">GMs at 100% associate participation</span><span
+              class="prize-award">District call shoutout + &times;1.5 store multiplier</span></div>
+        </div>
+      </div>
+
+      <div class="rules-footer-link">
+        <a href="rules.html" target="_blank">View full standalone rules page &rarr;</a>
+      </div>
+    </div>
+  </div>
 
 </body>
 
