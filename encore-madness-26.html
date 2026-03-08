@@ -2078,9 +2078,7 @@
 
     const CONTROLLER = {
 
-      // ── COMPETITION SETTINGS ──────────────────────────────────────────
       district: "Gap Mid Atlantic",
-      week: "Week 1 of 4",
       season: "March Madness '26",
       FLOOR_BONUS_MULTIPLIER: 1.5, // ×1.5 if 100% associate participation
 
@@ -2168,7 +2166,6 @@
         class="gap-logo-img" alt="GAP">
       <div>
         <div class="header-title">
-          <span id="hdr-week">Week 1 of 4</span>
           ENCORE MADNESS '26
           <span
             style="display:block;font-size:10px;font-weight:700;letter-spacing:3px;color:rgba(255,255,255,0.45);margin-top:2px">GAP
@@ -2249,7 +2246,6 @@
       const D = computeAllMetrics();
 
       // ── Header stats
-      document.getElementById('hdr-week').textContent = CONTROLLER.week + ' ·';
       document.getElementById('header-stats').innerHTML = `
     <div class="header-stat">
       <span class="header-stat-val">${(D.districtRate * 100).toFixed(2)}%</span>
