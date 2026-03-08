@@ -2100,8 +2100,8 @@
         { id: "6014", name: "6014 Southpoint", transactions: 670, cardsOpened: 13, associates: 11, participatingAssociates: 9 },
       ],
 
-      // ── GM LEADERSHIP DATA ────────────────────────────────────────────
-      gms: [
+      // ── LEADERSHIP DATA ────────────────────────────────────────────
+      leaders: [
         { name: "Rochelle A.", storeId: "1302", participationPct: 100 },
         { name: "Marcus T.", storeId: "1319", participationPct: 100 },
         { name: "Priya S.", storeId: "0594", participationPct: 100 },
@@ -2241,10 +2241,11 @@
         <div id="elite-scoreboard"></div>
       </div>
       <div class="card">
-        <div class="card-title">🎯 GM Floor — Gap Mid Atlantic</div>
-        <div class="card-subtitle">GMs with 90%+ associate participation unlock Leadership Floor status. Gold border =
+        <div class="card-title">🎯 Leadership Floor — Gap Mid Atlantic</div>
+        <div class="card-subtitle">Leaders with 90%+ associate participation unlock Leadership Floor status. Gold border
+          =
           100% floor active — triggering the ×1.5 points multiplier.</div>
-        <div id="gm-floor"></div>
+        <div id="leadership-floor"></div>
       </div>
     </div>
 
@@ -2328,8 +2329,8 @@
       // ── Elite Scoreboard
       renderEliteScoreboard(D);
 
-      // ── GM Floor
-      renderGMFloor(D);
+      // ── Leadership Floor
+      renderLeadershipFloor(D);
 
       // ── Footer
       document.getElementById('footer-district').textContent = CONTROLLER.district + ' · ' + CONTROLLER.season;
@@ -2592,29 +2593,29 @@
 
     // ─────────────────────────────────────────────────────
     function renderGMFloor(D) {
-      const sorted = [...CONTROLLER.gms].sort((a, b) => b.participationPct - a.participationPct);
-      const html = sorted.map(gm => {
-        const isFloor = gm.participationPct >= 90;
-        const is100 = gm.participationPct >= 100;
-        const storeName = CONTROLLER.stores.find(s => s.id === gm.storeId)?.name || gm.storeId;
-        const initials = gm.name.split(' ').map(w => w[0]).join('').slice(0, 2);
+      const sorted = [...CONTROLLER.leaders].sort((a, b) => b.participationPct - a.participationPct);
+      const html = sorted.map(leader => {
+        const isFloor = leader.participationPct >= 90;
+        const is100 = leader.participationPct >= 100;
+        const storeName = CONTROLLER.stores.find(s => s.id === leader.storeId)?.name || leader.storeId;
+        const initials = leader.name.split(' ').map(w => w[0]).join('').slice(0, 2);
         return `<div class="gm-item">
       <div class="gm-avatar ${is100 ? 'floor' : ''}">${initials}</div>
       <div class="gm-info">
-        <div class="gm-name">${gm.name} ${isFloor ? '<span class="floor-icon">🏅</span>' : ''}</div>
+        <div class="gm-name">${leader.name} ${isFloor ? '<span class="floor-icon">🏅</span>' : ''}</div>
         <div class="gm-store">${storeName} ${is100 ? '· <span style="color:var(--gold);font-size:11px">100% FLOOR ACTIVE</span>' : ''}</div>
         <div class="gm-bar">
-          <div class="gm-bar-fill ${isFloor ? 'floor-fill' : ''}" style="width:${gm.participationPct}%"></div>
+          <div class="gm-bar-fill ${isFloor ? 'floor-fill' : ''}" style="width:${leader.participationPct}%"></div>
         </div>
       </div>
       <div class="gm-participation">
-        <div class="gm-pct ${isFloor ? 'floor-hit' : ''}">${gm.participationPct}%</div>
+        <div class="gm-pct ${isFloor ? 'floor-hit' : ''}">${leader.participationPct}%</div>
         <div class="gm-pct-label">participation</div>
       </div>
     </div>`;
       }).join('');
 
-      document.getElementById('gm-floor').innerHTML = html;
+      document.getElementById('leadership-floor').innerHTML = html;
     }
   </script>
 
@@ -2644,7 +2645,7 @@
         </div>
         <div class="rules-alert">
           <strong>⚠️ No post = no bonus.</strong> Cards without a Zipline shoutout earn base points only. No Slam Dunk
-          or And-One bonus without the post. Associates post. GMs make sure they do.
+          or And-One bonus without the post. Associates post. Leaders make sure they do.
         </div>
       </div>
 
@@ -2737,8 +2738,8 @@
           <div class="rules-prize-card"><span class="prize-icon">⭐</span><span class="prize-name">The Encore 2.2%
               Club</span><span class="prize-who">Associates hitting 2.2%+ personal rate</span><span
               class="prize-award">Badge + district recognition</span></div>
-          <div class="rules-prize-card"><span class="prize-icon">🏅</span><span class="prize-name">GM Leadership
-              Floor</span><span class="prize-who">GMs at 100% associate participation</span><span
+          <div class="rules-prize-card"><span class="prize-icon">🏅</span><span class="prize-name">Leadership
+              Floor</span><span class="prize-who">Leaders at 100% associate participation</span><span
               class="prize-award">District call shoutout + &times;1.5 store multiplier</span></div>
         </div>
       </div>

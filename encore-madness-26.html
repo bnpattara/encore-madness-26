@@ -2222,8 +2222,9 @@
         <div id="elite-scoreboard"></div>
       </div>
       <div class="card">
-        <div class="card-title">🎯 GM Floor — Gap Mid Atlantic</div>
-        <div class="card-subtitle">GMs with 90%+ associate participation unlock Leadership Floor status. Gold border =
+        <div class="card-title">🎯 Leadership Floor — Gap Mid Atlantic</div>
+        <div class="card-subtitle">Leaders with 90%+ associate participation unlock Leadership Floor status. Gold border
+          =
           100% floor active — triggering the ×1.5 points multiplier.</div>
         <div id="gm-floor"></div>
       </div>
@@ -2546,19 +2547,18 @@
     }
 
     // ─────────────────────────────────────────────────────
-    function renderGMFloor(D) {
-      if (!CONTROLLER.gms || CONTROLLER.gms.length === 0) {
-        document.getElementById('gm-floor').innerHTML = `
-          <div style="padding: 40px 20px; text-align: center; color: var(--muted);">
-            <div style="font-size: 24px; margin-bottom: 10px;">📉</div>
-            <div style="font-size: 14px; font-weight: 500;">Awaiting Leadership Data</div>
-            <div style="font-size: 11px; margin-top: 5px; max-width: 250px; margin-left: auto; margin-right: auto; line-height: 1.4;">Associate participation tracked by GMs will appear here for the floor multiplier.</div>
+    function renderLeadershipFloor(D) {
+      if (!CONTROLLER.leaders || CONTROLLER.leaders.length === 0) {
+        document.getElementById('leadership-floor').innerHTML = `
+          <div style="text-align: center; padding: 40px 20px; color: var(--muted); font-size: 13px;">
+            <div style="font-size: 24px; margin-bottom: 8px;">⏳</div>
+            <div>Awaiting Leadership Data</div>
+            <div style="font-size: 11px; margin-top: 5px; max-width: 250px; margin-left: auto; margin-right: auto; line-height: 1.4;">Associate participation tracked by Leaders will appear here for the floor multiplier.</div>
           </div>
         `;
         return;
       }
-
-      const sorted = [...CONTROLLER.gms].sort((a, b) => b.participationPct - a.participationPct);
+      const sorted = [...CONTROLLER.leaders].sort((a, b) => b.participationPct - a.participationPct);
       const html = sorted.map(gm => {
         const isFloor = gm.participationPct >= 90;
         const is100 = gm.participationPct >= 100;
@@ -2610,7 +2610,7 @@
         </div>
         <div class="rules-alert">
           <strong>⚠️ No post = no bonus.</strong> Cards without a Zipline shoutout earn base points only. No Slam Dunk
-          or And-One bonus without the post. Associates post. GMs make sure they do.
+          or And-One bonus without the post. Associates post. Leaders make sure they do.
         </div>
       </div>
 
