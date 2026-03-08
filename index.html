@@ -461,7 +461,7 @@
     /* ── STORE GRID ── */
     .store-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 12px;
     }
 
@@ -2078,59 +2078,33 @@
 
     const CONTROLLER = {
 
-      // ── COMPETITION SETTINGS ──────────────────────────────────────────
       district: "Gap Mid Atlantic",
-      week: "Week 3 of 4",
       season: "March Madness '26",
-      TARGET_RATE: 0.022,          // 2.2% = 1 card per ~45.4 transactions
       FLOOR_BONUS_MULTIPLIER: 1.5, // ×1.5 if 100% associate participation
 
       // ── STORE DATA ────────────────────────────────────────────────────
-      // Fields: id, name, transactions, cardsOpened, associates, participatingAssociates
+      // Custom Strike Rate goals for March
       stores: [
-        { id: "1302", name: "1302 Perimeter", transactions: 980, cardsOpened: 27, associates: 14, participatingAssociates: 14 },
-        { id: "1319", name: "1319 East Cobb", transactions: 740, cardsOpened: 19, associates: 11, participatingAssociates: 11 },
-        { id: "6004", name: "6004 Crabtree", transactions: 860, cardsOpened: 21, associates: 13, participatingAssociates: 11 },
-        { id: "6108", name: "6108 Haywood", transactions: 510, cardsOpened: 9, associates: 9, participatingAssociates: 7 },
-        { id: "0594", name: "0594 Mayfaire", transactions: 430, cardsOpened: 11, associates: 8, participatingAssociates: 8 },
-        { id: "1224", name: "1224 Short Pump", transactions: 920, cardsOpened: 23, associates: 13, participatingAssociates: 11 },
-        { id: "1459", name: "1459 Avalon", transactions: 1100, cardsOpened: 22, associates: 15, participatingAssociates: 12 },
-        { id: "4807", name: "4807 Hanes", transactions: 390, cardsOpened: 7, associates: 8, participatingAssociates: 6 },
-        { id: "1305", name: "1305 Lenox", transactions: 1240, cardsOpened: 31, associates: 16, participatingAssociates: 16 },
-        { id: "6014", name: "6014 Southpoint", transactions: 670, cardsOpened: 13, associates: 11, participatingAssociates: 9 },
+        { id: "1302", name: "1302 Perimeter", transactions: 0, cardsOpened: 0, associates: 14, participatingAssociates: 0, targetRate: 0.021 },
+        { id: "1319", name: "1319 East Cobb", transactions: 0, cardsOpened: 0, associates: 11, participatingAssociates: 0, targetRate: 0.019 },
+        { id: "6004", name: "6004 Crabtree", transactions: 0, cardsOpened: 0, associates: 13, participatingAssociates: 0, targetRate: 0.02 },
+        { id: "6108", name: "6108 Haywood", transactions: 0, cardsOpened: 0, associates: 9, participatingAssociates: 0, targetRate: 0.021 },
+        { id: "0594", name: "0594 Mayfaire", transactions: 0, cardsOpened: 0, associates: 8, participatingAssociates: 0, targetRate: 0.019 },
+        { id: "1224", name: "1224 Short Pump", transactions: 0, cardsOpened: 0, associates: 13, participatingAssociates: 0, targetRate: 0.02 },
+        { id: "1459", name: "1459 Avalon", transactions: 0, cardsOpened: 0, associates: 15, participatingAssociates: 0, targetRate: 0.02 },
+        { id: "4807", name: "4807 Hanes", transactions: 0, cardsOpened: 0, associates: 8, participatingAssociates: 0, targetRate: 0.019 },
+        { id: "1305", name: "1305 Lenox", transactions: 0, cardsOpened: 0, associates: 16, participatingAssociates: 0, targetRate: 0.021 },
+        { id: "6014", name: "6014 Southpoint", transactions: 0, cardsOpened: 0, associates: 11, participatingAssociates: 0, targetRate: 0.021 },
+        { id: "1321", name: "1321 MOG", transactions: 0, cardsOpened: 0, associates: 10, participatingAssociates: 0, targetRate: 0.021 },
       ],
 
-      // ── LEADERSHIP DATA ────────────────────────────────────────────
-      leaders: [
-        { name: "Rochelle A.", storeId: "1302", participationPct: 100 },
-        { name: "Marcus T.", storeId: "1319", participationPct: 100 },
-        { name: "Priya S.", storeId: "0594", participationPct: 100 },
-        { name: "Devon W.", storeId: "6004", participationPct: 85 },
-        { name: "Kim L.", storeId: "1305", participationPct: 100 },
-        { name: "Andre P.", storeId: "1224", participationPct: 77 },
-        { name: "Tamika B.", storeId: "1459", participationPct: 80 },
-        { name: "Leo C.", storeId: "6108", participationPct: 78 },
-        { name: "Sarah M.", storeId: "4807", participationPct: 75 },
-        { name: "Darius J.", storeId: "6014", participationPct: 82 },
-      ],
+      // ── GM LEADERSHIP DATA ────────────────────────────────────────────
+      gms: [],
 
       // ── ASSOCIATE LEADERBOARD ─────────────────────────────────────────
       // slamDunks = Order In Store + Card opened (holy grail)
       // andOnes   = 3+ item baskets with card opened
-      associates: [
-        { name: "Jordan M.", storeId: "1305", cardsOpened: 9, slamDunks: 6, andOnes: 3, transactions: 95 },
-        { name: "Aaliyah K.", storeId: "1302", cardsOpened: 8, slamDunks: 4, andOnes: 4, transactions: 88 },
-        { name: "Dante R.", storeId: "1319", cardsOpened: 7, slamDunks: 5, andOnes: 2, transactions: 102 },
-        { name: "Simone W.", storeId: "0594", cardsOpened: 6, slamDunks: 4, andOnes: 3, transactions: 79 },
-        { name: "Marcus J.", storeId: "1305", cardsOpened: 6, slamDunks: 3, andOnes: 5, transactions: 84 },
-        { name: "Keisha T.", storeId: "1459", cardsOpened: 6, slamDunks: 2, andOnes: 3, transactions: 110 },
-        { name: "Tyler B.", storeId: "6004", cardsOpened: 5, slamDunks: 3, andOnes: 2, transactions: 91 },
-        { name: "Nina C.", storeId: "1302", cardsOpened: 5, slamDunks: 2, andOnes: 4, transactions: 97 },
-        { name: "Zara H.", storeId: "1224", cardsOpened: 4, slamDunks: 2, andOnes: 2, transactions: 89 },
-        { name: "Isaiah P.", storeId: "6014", cardsOpened: 4, slamDunks: 1, andOnes: 3, transactions: 93 },
-        { name: "Mia F.", storeId: "6108", cardsOpened: 3, slamDunks: 2, andOnes: 1, transactions: 72 },
-        { name: "Devon A.", storeId: "4807", cardsOpened: 3, slamDunks: 0, andOnes: 2, transactions: 77 },
-      ],
+      associates: [],
     };
 
     // ══════════════════════════════════════════════════════════════════
@@ -2138,12 +2112,12 @@
     // ══════════════════════════════════════════════════════════════════
 
     function computeStoreMetrics(store) {
-      const rate = store.cardsOpened / store.transactions;
-      const targetCards = Math.round(store.transactions * CONTROLLER.TARGET_RATE);
+      const rate = store.transactions > 0 ? store.cardsOpened / store.transactions : 0;
+      const targetCards = Math.round(store.transactions * store.targetRate);
       const delta = store.cardsOpened - targetCards;
-      const participationPct = store.participatingAssociates / store.associates;
-      const hasFloorBonus = store.participatingAssociates >= store.associates;
-      const isBooster = rate >= CONTROLLER.TARGET_RATE;
+      const participationPct = store.associates > 0 ? store.participatingAssociates / store.associates : 0;
+      const hasFloorBonus = store.associates > 0 && store.participatingAssociates >= store.associates;
+      const isBooster = rate >= store.targetRate;
       const points = store.cardsOpened * (hasFloorBonus ? CONTROLLER.FLOOR_BONUS_MULTIPLIER : 1);
       return {
         ...store,
@@ -2161,20 +2135,26 @@
       const stores = CONTROLLER.stores.map(computeStoreMetrics);
       const totalTx = stores.reduce((s, x) => s + x.transactions, 0);
       const totalCards = stores.reduce((s, x) => s + x.cardsOpened, 0);
-      const districtRate = totalCards / totalTx;
-      const targetTotalCards = Math.round(totalTx * CONTROLLER.TARGET_RATE);
+      const targetTotalCards = stores.reduce((s, x) => s + x.targetCards, 0);
+      const districtRate = totalTx > 0 ? totalCards / totalTx : 0;
+      const aggregateDistrictGoalRate = totalTx > 0 ? targetTotalCards / totalTx : 0;
       const deficitCards = targetTotalCards - totalCards;
 
       const sorted = [...stores].sort((a, b) => b.rate - a.rate);
       const ranked = sorted.map((s, i) => ({ ...s, rank: i + 1 }));
 
-      const assocWithRate = CONTROLLER.associates.map(a => ({
-        ...a,
-        rate: a.cardsOpened / a.transactions,
-        inClub: (a.cardsOpened / a.transactions) >= CONTROLLER.TARGET_RATE,
-      })).sort((a, b) => b.cardsOpened - a.cardsOpened);
+      const assocWithRate = CONTROLLER.associates.map(a => {
+        const aRate = a.transactions > 0 ? a.cardsOpened / a.transactions : 0;
+        const assocStore = CONTROLLER.stores.find(s => s.id === a.storeId);
+        const storeGoal = assocStore ? assocStore.targetRate : 0.022; // default if store somehow missing
+        return {
+          ...a,
+          rate: aRate,
+          inClub: aRate >= storeGoal,
+        }
+      }).sort((a, b) => b.cardsOpened - a.cardsOpened);
 
-      return { stores: ranked, totalTx, totalCards, districtRate, targetTotalCards, deficitCards, assocWithRate };
+      return { stores: ranked, totalTx, totalCards, districtRate, targetTotalCards, deficitCards, assocWithRate, aggregateDistrictGoalRate };
     }
   </script>
 
@@ -2186,7 +2166,6 @@
         class="gap-logo-img" alt="GAP">
       <div>
         <div class="header-title">
-          <span id="hdr-week">Week 3 of 4</span>
           ENCORE MADNESS '26
           <span
             style="display:block;font-size:10px;font-weight:700;letter-spacing:3px;color:rgba(255,255,255,0.45);margin-top:2px">GAP
@@ -2209,7 +2188,8 @@
     <!-- District Engine -->
     <div class="card district-engine" id="district-engine-card">
       <div class="card-title">🏀 The District Engine</div>
-      <div class="card-subtitle">Each bar is one store. Boosters are at or above the 2.2% goal. Anchor Zones are below —
+      <div class="card-subtitle">Each bar is one store. Boosters are at or above their individual strike rate goal.
+        Anchor Zones are below —
         and are costing the district points.</div>
       <div id="district-engine"></div>
     </div>
@@ -2235,8 +2215,9 @@
     <!-- Elite Scoreboard -->
     <div class="elite-grid">
       <div class="card">
-        <div class="card-title">⭐ The Encore 2.2% Club</div>
-        <div class="card-subtitle">Associates hitting the 2.2% strike rate goal. Slam Dunks = Order In Store + Card
+        <div class="card-title">⭐ The Encore Club</div>
+        <div class="card-subtitle">Associates hitting their store's custom strike rate goal. Slam Dunks = Order In Store
+          + Card
           opened. And-Ones = 3+ item basket with card.</div>
         <div id="elite-scoreboard"></div>
       </div>
@@ -2245,16 +2226,19 @@
         <div class="card-subtitle">Leaders with 90%+ associate participation unlock Leadership Floor status. Gold border
           =
           100% floor active — triggering the ×1.5 points multiplier.</div>
-        <div id="leadership-floor"></div>
+        <div id="gm-floor"></div>
       </div>
     </div>
 
   </main>
 
   <footer class="footer">
-    <span id="footer-district"></span>
-    <span>Gap Inc. Encore Credit Card Program &middot; Internal Use Only</span>
-    <span id="footer-rate"></span>
+    <div>
+      <span id="footer-district"></span> ·
+      <span>Gap Inc. Encore Credit Card Program &middot; Internal Use Only</span>
+    </div>
+    <span id="footer-rate" style="margin-right: -450px;"></span>
+    <span style="font-size: 10px; color: var(--gold);">Created by Benn Pattara, Loyalty Lead at Shortpump 1224</span>
   </footer>
 
   <!-- ─── RENDER ENGINE ──────────────────────────────── -->
@@ -2263,7 +2247,6 @@
       const D = computeAllMetrics();
 
       // ── Header stats
-      document.getElementById('hdr-week').textContent = CONTROLLER.week + ' ·';
       document.getElementById('header-stats').innerHTML = `
     <div class="header-stat">
       <span class="header-stat-val">${(D.districtRate * 100).toFixed(2)}%</span>
@@ -2305,11 +2288,11 @@
       <span class="summary-tile-val ${D.deficitCards > 0 ? 'red' : 'green'}">
         ${D.deficitCards > 0 ? D.deficitCards + ' short' : 'On Track'}
       </span>
-      <span class="summary-tile-label">vs. 2.2% Barrier</span>
+      <span class="summary-tile-label">vs. Barrier</span>
     </div>
     <div class="summary-tile">
       <span class="summary-tile-val gold">${boosters}</span>
-      <span class="summary-tile-label">Boosters (≥2.2%)</span>
+      <span class="summary-tile-label">Boosters (≥Goal)</span>
     </div>
     <div class="summary-tile">
       <span class="summary-tile-val red">${anchors}</span>
@@ -2329,12 +2312,12 @@
       // ── Elite Scoreboard
       renderEliteScoreboard(D);
 
-      // ── Leadership Floor
-      renderLeadershipFloor(D);
+      // ── GM Floor
+      renderGMFloor(D);
 
       // ── Footer
       document.getElementById('footer-district').textContent = CONTROLLER.district + ' · ' + CONTROLLER.season;
-      document.getElementById('footer-rate').textContent = `Goal: 1 card per 45.4 txn · 2.2% Strike Rate`;
+      document.getElementById('footer-rate').textContent = `Tracking to custom store strike rate goals`;
     });
 
     // ─────────────────────────────────────────────────────
@@ -2385,20 +2368,23 @@
     ${i < segStores.length - 1 && segStores[i].isBooster !== segStores[i + 1]?.isBooster ? '<div class="pb-divider"></div>' : ''}`;
       }).join('');
 
-      // ── Master bar: district rate vs 2.2% goal as single progress fill
-      // Bar fills to 100% = hitting exactly 2.2%. Capped at 100% visually even if above.
-      const masterFillPct = Math.min((D.districtRate / CONTROLLER.TARGET_RATE) * 100, 100);
-      const isOnTrack = D.districtRate >= CONTROLLER.TARGET_RATE;
+      // ── Master bar: district rate vs aggregate goal as single progress fill
+      const masterFillPct = D.aggregateDistrictGoalRate > 0 ? Math.min((D.districtRate / D.aggregateDistrictGoalRate) * 100, 100) : 0;
+      const isOnTrack = D.districtRate >= D.aggregateDistrictGoalRate;
       const masterFillCls = isOnTrack ? 'on-track' : 'below-track';
-      // Goal line always at 100% of bar width (it IS the 100% mark)
       const goalLinePct = 100; // goal = end of bar; fill shows how close we are
       const boosterCount = D.stores.filter(s => s.isBooster).length;
       const anchorCount = D.stores.filter(s => !s.isBooster).length;
       const floorCount = D.stores.filter(s => s.hasFloorBonus).length;
       const statusColor = isOnTrack ? 'var(--green)' : 'var(--red)';
-      const statusText = isOnTrack
-        ? `+${((D.districtRate - CONTROLLER.TARGET_RATE) * 100).toFixed(2)}% ABOVE TARGET`
-        : `${Math.abs(((D.districtRate - CONTROLLER.TARGET_RATE) * 100)).toFixed(2)}% BELOW TARGET`;
+
+      let statusText = 'AWAITING TRAFFIC';
+      if (D.totalTx > 0) {
+        statusText = isOnTrack
+          ? `+${((D.districtRate - D.aggregateDistrictGoalRate) * 100).toFixed(2)}% ABOVE TARGET`
+          : `${Math.abs(((D.districtRate - D.aggregateDistrictGoalRate) * 100)).toFixed(2)}% BELOW TARGET`;
+      }
+
       const cardsToGoLabel = D.deficitCards > 0
         ? `${D.deficitCards} more cards needed`
         : `${Math.abs(D.deficitCards)} cards above pace`;
@@ -2411,13 +2397,13 @@
         </div>
         <div class="master-bar-right">
           <span class="master-bar-status" style="color:${statusColor}">${statusText}</span>
-          <span class="master-bar-sub">${cardsToGoLabel} · goal is 2.20%</span>
+          <span class="master-bar-sub">${cardsToGoLabel} · goal is 2.0%</span>
         </div>
       </div>
 
       <div style="position:relative; padding-top: 20px; margin-bottom: 0;">
         <div class="master-goal-line" style="left:100%">
-          <span class="master-goal-line-label">2.2% GOAL</span>
+          <span class="master-goal-line-label">2.0% GOAL</span>
         </div>
         <div class="master-progress-outer">
           <div class="master-progress-fill ${masterFillCls}" style="width:${masterFillPct.toFixed(1)}%">
@@ -2430,7 +2416,7 @@
 
       <div class="master-bar-pills">
         <div class="master-pill booster-pill">
-          <span class="pill-count">${boosterCount}</span> BOOSTERS ≥2.2%
+          <span class="pill-count">${boosterCount}</span> BOOSTERS ≥GOAL
         </div>
         <div class="master-pill anchor-pill">
           <span class="pill-count">${anchorCount}</span> ANCHOR ZONES
@@ -2444,13 +2430,13 @@
 
     <div class="pb-header">
       <span class="pb-header-label">Store Breakdown · Cards vs Goal</span>
-      <span class="pb-goal-tag">▏ = 2.2% Goal</span>
+      <span class="pb-goal-tag">▏ = Store Goal</span>
     </div>
 
     <div class="power-bar-list">${rowsHTML}</div>
 
     <div class="power-bar-legend">
-      <span><span class="legend-dot" style="background:var(--gap-blue)"></span> Booster (≥2.2%)</span>
+      <span><span class="legend-dot" style="background:var(--gap-blue)"></span> Booster (≥Goal)</span>
       <span><span class="legend-dot" style="background:repeating-linear-gradient(45deg,var(--red),var(--red) 4px,#8c0a14 4px,#8c0a14 8px)"></span> Anchor Zone</span>
       ${D.deficitCards > 0 ? `<span><span class="legend-dot" style="background:rgba(200,16,46,0.25);border:1px dashed rgba(200,16,46,0.5)"></span> Deficit Gap</span>` : ''}
       <span style="margin-left:auto">${D.stores.filter(s => s.isBooster).length} Boosters · ${D.stores.filter(s => !s.isBooster).length} Anchors</span>
@@ -2461,11 +2447,11 @@
       <span class="anchor-alert-icon">⚠️</span>
       <div class="anchor-alert-text">
         <strong>ANCHOR ALERT</strong> — ${anchorNames} ${anchorStores.length > 1 ? 'are' : 'is'} dragging the district.
-        <strong>${totalDeficit} combined cards</strong> needed to clear the 2.2% Barrier.
+        <strong>${totalDeficit} combined cards</strong> needed to clear their respective goals.
       </div>
     </div>` : `<div class="anchor-alert" style="border-color:rgba(0,166,81,0.4);background:rgba(0,166,81,0.1)">
       <span class="anchor-alert-icon">✅</span>
-      <div class="anchor-alert-text"><strong style="color:var(--green)">DISTRICT ON FIRE</strong> — All stores above the 2.2% Performance Barrier. Defend the lead.</div>
+      <div class="anchor-alert-text"><strong style="color:var(--green)">DISTRICT ON FIRE</strong> — All stores above their Performance Barrier. Defend the lead.</div>
     </div>`}
   `;
     }
@@ -2474,7 +2460,7 @@
     function renderStoreGrid(D) {
       const html = D.stores.map(store => {
         const ratePct = (store.rate * 100).toFixed(2);
-        const barFill = Math.min((store.rate / (CONTROLLER.TARGET_RATE * 2)) * 100, 100);
+        const barFill = Math.min((store.rate / (store.targetRate * 2)) * 100, 100);
         const cls = store.isBooster ? 'is-booster' : 'is-anchor';
         const floorCls = store.hasFloorBonus ? 'has-floor-bonus' : '';
         const partPct = Math.round(store.participationPct * 100);
@@ -2511,48 +2497,17 @@
 
     // ─────────────────────────────────────────────────────
     function renderBrackets(D) {
-      const top5 = D.stores.slice(0, 5);
-      const bottom5 = D.stores.slice(5).reverse(); // worst at bottom gets top seed in NIT
-      const maxPts = top5[0].points;
-      const maxNIT = bottom5[0] ? bottom5[0].points : 1;
+      // Empty state for week 1
+      const emptyHTML = `
+        <div style="padding: 40px 20px; text-align: center; color: var(--muted);">
+          <div style="font-size: 24px; margin-bottom: 10px;">⏳</div>
+          <div style="font-size: 14px; font-weight: 500;">Awaiting Week 1 Results</div>
+          <div style="font-size: 11px; margin-top: 5px; max-width: 250px; margin-left: auto; margin-right: auto; line-height: 1.4;">Standings will be updated once store traffic and card data begins accumulating.</div>
+        </div>
+      `;
 
-      const champHTML = top5.map((s, i) => {
-        const seedClass = i === 0 ? 'seed-1' : i === 1 ? 'seed-2' : i === 2 ? 'seed-3' : '';
-        const seedIcon = i === 0 ? '🏆' : i === 1 ? '🥈' : i === 2 ? '🥉' : `#${i + 1}`;
-        const barW = (s.points / maxPts) * 100;
-        return `<div class="bracket-item ${seedClass}">
-      <div class="bracket-seed">${i === 0 ? '🏆' : i + 1}</div>
-      <div class="bracket-info">
-        <div class="bracket-store-name">${s.name}</div>
-        <div class="bracket-store-sub">${(s.rate * 100).toFixed(2)}% rate · ${s.cardsOpened} cards</div>
-        <div class="bracket-bar"><div class="bracket-bar-fill champ-fill" style="width:${barW}%"></div></div>
-      </div>
-      <div>
-        <div class="bracket-pts">${Math.round(s.points)}</div>
-        <div class="bracket-pts-label">pts</div>
-      </div>
-    </div>`;
-      }).join('');
-
-      const nitHTML = bottom5.map((s, i) => {
-        const barW = (s.points / (maxNIT || 1)) * 100;
-        const rank = D.stores.length - i;
-        return `<div class="bracket-item">
-      <div class="bracket-seed" style="font-size:14px;color:rgba(200,16,46,0.6)">#${rank}</div>
-      <div class="bracket-info">
-        <div class="bracket-store-name">${s.name}</div>
-        <div class="bracket-store-sub">${(s.rate * 100).toFixed(2)}% rate · ${s.cardsOpened} cards · ${Math.abs(s.delta)} short</div>
-        <div class="bracket-bar"><div class="bracket-bar-fill nit-fill" style="width:${barW}%"></div></div>
-      </div>
-      <div>
-        <div class="bracket-pts" style="color:var(--muted)">${Math.round(s.points)}</div>
-        <div class="bracket-pts-label">pts</div>
-      </div>
-    </div>`;
-      }).join('');
-
-      document.getElementById('champ-bracket').innerHTML = champHTML;
-      document.getElementById('nit-bracket').innerHTML = nitHTML;
+      document.getElementById('champ-bracket').innerHTML = emptyHTML;
+      document.getElementById('nit-bracket').innerHTML = emptyHTML;
     }
 
     // ─────────────────────────────────────────────────────
@@ -2567,7 +2522,7 @@
         return `<tr>
       <td><div class="assoc-rank ${rankClass}">${i + 1}</div></td>
       <td>
-        <div class="assoc-name">${a.name} ${a.inClub ? '<span class="club-badge">2.2% CLUB</span>' : ''}</div>
+        <div class="assoc-name">${a.name} ${a.inClub ? '<span class="club-badge">THE CLUB</span>' : ''}</div>
         <div class="assoc-store">${storeName}</div>
       </td>
       <td><div class="assoc-cards">${a.cardsOpened}</div></td>
@@ -2592,30 +2547,40 @@
     }
 
     // ─────────────────────────────────────────────────────
-    function renderGMFloor(D) {
+    function renderLeadershipFloor(D) {
+      if (!CONTROLLER.leaders || CONTROLLER.leaders.length === 0) {
+        document.getElementById('leadership-floor').innerHTML = `
+          <div style="text-align: center; padding: 40px 20px; color: var(--muted); font-size: 13px;">
+            <div style="font-size: 24px; margin-bottom: 8px;">⏳</div>
+            <div>Awaiting Leadership Data</div>
+            <div style="font-size: 11px; margin-top: 5px; max-width: 250px; margin-left: auto; margin-right: auto; line-height: 1.4;">Associate participation tracked by Leaders will appear here for the floor multiplier.</div>
+          </div>
+        `;
+        return;
+      }
       const sorted = [...CONTROLLER.leaders].sort((a, b) => b.participationPct - a.participationPct);
-      const html = sorted.map(leader => {
-        const isFloor = leader.participationPct >= 90;
-        const is100 = leader.participationPct >= 100;
-        const storeName = CONTROLLER.stores.find(s => s.id === leader.storeId)?.name || leader.storeId;
-        const initials = leader.name.split(' ').map(w => w[0]).join('').slice(0, 2);
+      const html = sorted.map(gm => {
+        const isFloor = gm.participationPct >= 90;
+        const is100 = gm.participationPct >= 100;
+        const storeName = CONTROLLER.stores.find(s => s.id === gm.storeId)?.name || gm.storeId;
+        const initials = gm.name.split(' ').map(w => w[0]).join('').slice(0, 2);
         return `<div class="gm-item">
       <div class="gm-avatar ${is100 ? 'floor' : ''}">${initials}</div>
       <div class="gm-info">
-        <div class="gm-name">${leader.name} ${isFloor ? '<span class="floor-icon">🏅</span>' : ''}</div>
+        <div class="gm-name">${gm.name} ${isFloor ? '<span class="floor-icon">🏅</span>' : ''}</div>
         <div class="gm-store">${storeName} ${is100 ? '· <span style="color:var(--gold);font-size:11px">100% FLOOR ACTIVE</span>' : ''}</div>
         <div class="gm-bar">
-          <div class="gm-bar-fill ${isFloor ? 'floor-fill' : ''}" style="width:${leader.participationPct}%"></div>
+          <div class="gm-bar-fill ${isFloor ? 'floor-fill' : ''}" style="width:${gm.participationPct}%"></div>
         </div>
       </div>
       <div class="gm-participation">
-        <div class="gm-pct ${isFloor ? 'floor-hit' : ''}">${leader.participationPct}%</div>
+        <div class="gm-pct ${isFloor ? 'floor-hit' : ''}">${gm.participationPct}%</div>
         <div class="gm-pct-label">participation</div>
       </div>
     </div>`;
       }).join('');
 
-      document.getElementById('leadership-floor').innerHTML = html;
+      document.getElementById('gm-floor').innerHTML = html;
     }
   </script>
 
@@ -2700,7 +2665,7 @@
               <td><strong>3 pts</strong> total</td>
             </tr>
             <tr>
-              <td>Hit 2.2%+ personal rate for the week</td>
+              <td>Hit your personal strike rate goal for the week</td>
               <td><strong>+5 pt weekly bonus</strong></td>
             </tr>
           </tbody>
@@ -2712,36 +2677,12 @@
 
       <div class="rules-section">
         <h2>🏆 Bracket Structure</h2>
-        <p><strong>Championship Bracket</strong> &mdash; Top 5 stores by cumulative points. Re-seeded each week.</p>
+        <p><strong>Championship Bracket</strong> &mdash; Top stores by cumulative points. Re-seeded each week.</p>
         <p><strong>NIT Redemption Track</strong> &mdash; Bottom stores. Any NIT store that crosses their strike rate
           goal by end of Week
           3 wins a team prize.</p>
-        <p><strong>Weekly Rivalries</strong> &mdash; 5 head-to-head store matchups per week. Week 1 seeded by opening
-          rate (1v10, 2v9, 3v8, 4v7, 5v6). Winning your matchup = <strong>+5 pts</strong>.</p>
-      </div>
-
-      <div class="rules-section">
-        <h2>🏅 Prizes</h2>
-        <div class="rules-prizes-grid">
-          <div class="rules-prize-card"><span class="prize-icon">🏆</span><span class="prize-name">District
-              Champion</span><span class="prize-who">#1 store &mdash; cumulative points after Week 3</span><span
-              class="prize-award">Trophy</span></div>
-          <div class="rules-prize-card"><span class="prize-icon">🥈</span><span class="prize-name">Runner-Up</span><span
-              class="prize-who">#2 store after Week 3</span><span class="prize-award">Gift card for the team</span>
-          </div>
-          <div class="rules-prize-card"><span class="prize-icon">🎁</span><span class="prize-name">NIT
-              Survivor</span><span class="prize-who">Any NIT store crossing their goal by Week 3</span><span
-              class="prize-award">Team Prize</span></div>
-          <div class="rules-prize-card"><span class="prize-icon">🎯</span><span class="prize-name">District
-              MVP</span><span class="prize-who">Top individual associate by cumulative points</span><span
-              class="prize-award">$50 gift card</span></div>
-          <div class="rules-prize-card"><span class="prize-icon">⭐</span><span class="prize-name">The Encore 2.2%
-              Club</span><span class="prize-who">Associates hitting 2.2%+ personal rate</span><span
-              class="prize-award">Badge + district recognition</span></div>
-          <div class="rules-prize-card"><span class="prize-icon">🏅</span><span class="prize-name">Leadership
-              Floor</span><span class="prize-who">Leaders at 100% associate participation</span><span
-              class="prize-award">District call shoutout + &times;1.5 store multiplier</span></div>
-        </div>
+        <p><strong>Weekly Rivalries</strong> &mdash; Head-to-head store matchups per week. Week 1 seeded by opening
+          rate. Winning your matchup = <strong>+5 pts</strong>.</p>
       </div>
 
       <div class="rules-footer-link">
