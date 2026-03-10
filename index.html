@@ -1812,8 +1812,9 @@
       }
     }
 
-    /* ── RULES MODAL ── */
-    .rules-btn {
+    /* ── RULES MODAL & BRIEFING BTN ── */
+    .rules-btn,
+    .briefing-btn {
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 700;
       font-size: 11px;
@@ -1829,7 +1830,8 @@
       flex-shrink: 0;
     }
 
-    .rules-btn:hover {
+    .rules-btn:hover,
+    .briefing-btn:hover {
       background: rgba(255, 255, 255, 0.15);
       color: var(--white);
     }
@@ -2062,6 +2064,175 @@
     .rules-footer-link a:hover {
       color: var(--white);
     }
+
+    /* ── DAILY UPDATE MODAL ── */
+    .daily-update-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 5, 20, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .daily-update-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .daily-update-modal {
+      background: linear-gradient(135deg, #0e1a38 0%, #060b19 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      width: 90%;
+      max-width: 500px;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 30px;
+      position: relative;
+      transform: translateY(20px) scale(0.98);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+    }
+
+    .daily-update-overlay.open .daily-update-modal {
+      transform: translateY(0) scale(1);
+    }
+
+    .update-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 24px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0;
+      transition: color 0.2s;
+    }
+
+    .update-close:hover {
+      color: var(--white);
+    }
+
+    .update-kicker {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      color: var(--gold);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .update-kicker::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    .update-date {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.4);
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    .update-headline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    .update-body {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    .update-section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 8px;
+    }
+
+    .update-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 25px 0;
+    }
+
+    .update-list li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 12px;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .update-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--gap-blue);
+      font-weight: bold;
+    }
+
+    .update-list.wins li::before {
+      content: '🔥';
+      font-size: 12px;
+      top: 1px;
+    }
+
+    .update-btn {
+      display: block;
+      width: 100%;
+      background: var(--gap-blue);
+      color: white;
+      text-align: center;
+      padding: 14px;
+      border-radius: 3px;
+      border: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .update-btn:hover {
+      background: #004d9c;
+    }
   </style>
 </head>
 
@@ -2113,6 +2284,23 @@
         { name: "Annie B.", storeId: "6004", cardsOpened: 1, slamDunks: 0, andOnes: 0, transactions: 13 },
         { name: "Beth R.", storeId: "N/A", cardsOpened: 1, slamDunks: 0, andOnes: 0, transactions: 0 },
       ],
+
+      // ── DAILY UPDATE MODULE ───────────────────────────────────────────
+      dailyUpdate: {
+        isActive: true,
+        date: "Tuesday, March 10",
+        headline: "Crabtree pushing hard. The Encore club forms.",
+        messageText: "We are officially on the board, but collectively as a district we are slightly below our target for the month. To get back on track, let's focus on building culture! Remember to use the 'phrase that pays,' ask every single customer, and make sure everyone knows about the amazing benefits of the Encore card. The Encore club is starting to form and we're seeing strong early numbers from the Anchor Zones trying to break out.",
+        opportunities: [
+          "Crabtree (6004) with a huge 7 cards off 214 transactions.",
+          "Hanes (4807) breaking the target with a 4.76% strike rate.",
+          "Short Pump (1224) leading on volume with 280 transactions."
+        ],
+        topPerformers: [
+          "Trina M. (0594) & Toya G. (1302) both at 11.11% personal rate.",
+          "Ryan S. (1305) close behind at 10% personal rate."
+        ]
+      }
     };
 
     // ══════════════════════════════════════════════════════════════════
@@ -2181,8 +2369,12 @@
         </div>
       </div>
       <div class="live-badge">● LIVE</div>
-      <button class="rules-btn" onclick="document.getElementById('rulesOverlay').classList.add('open')">&#9432; Rules
-        &amp; Prizes</button>
+      <div style="display:flex; gap:8px;">
+        <button class="briefing-btn"
+          onclick="document.getElementById('daily-update-overlay').classList.add('open')">&#128224; Briefing</button>
+        <button class="rules-btn" onclick="document.getElementById('rulesOverlay').classList.add('open')">&#9432; Rules
+          &amp; Prizes</button>
+      </div>
     </div>
     <div class="header-stats" id="header-stats"></div>
   </header>
@@ -2588,8 +2780,86 @@
     </div>`;
       }).join('');
 
-      document.getElementById('gm-floor').innerHTML = html;
+      document.getElementById('leadership-floor').innerHTML = html;
     }
+
+    // ─────────────────────────────────────────────────────
+    function renderDailyUpdate(D) {
+      if (!D.dailyUpdate || !D.dailyUpdate.isActive) return;
+
+      // Check if user has already dismissed it today
+      const today = new Date().toISOString().split('T')[0];
+      const dismissed = sessionStorage.getItem(`encoreUpdate_${today}`);
+
+      // We ALWAYS build and inject the HTML so the "Briefing" button works,
+      // but we only pop it up automatically on load if !dismissed.
+
+      let html = `
+        <div class="daily-update-overlay" id="daily-update-overlay">
+          <div class="daily-update-modal">
+            <button class="update-close" id="update-close">&times;</button>
+            <div class="update-kicker">The Morning Briefing</div>
+            <div class="update-date">${D.dailyUpdate.date}</div>
+            
+            <div class="update-headline">${D.dailyUpdate.headline}</div>
+            <div class="update-body">${D.dailyUpdate.messageText}</div>`;
+
+      if (D.dailyUpdate.opportunities && D.dailyUpdate.opportunities.length > 0) {
+        html += `
+            <div class="update-section-title">Winning Opportunities</div>
+            <ul class="update-list wins">
+              ${D.dailyUpdate.opportunities.map(opp => `<li>${opp}</li>`).join('')}
+            </ul>`;
+      }
+
+      if (D.dailyUpdate.topPerformers && D.dailyUpdate.topPerformers.length > 0) {
+        html += `
+            <div class="update-section-title">Top Performers</div>
+            <ul class="update-list">
+              ${D.dailyUpdate.topPerformers.map(perf => `<li>${perf}</li>`).join('')}
+            </ul>`;
+      }
+
+      html += `
+            <button class="update-btn" id="update-dismiss-btn">Let's Go</button>
+          </div>
+        </div>
+      `;
+
+      // Inject into DOM
+      document.body.insertAdjacentHTML('beforeend', html);
+
+      // Add logic to open immediately if not already dismissed
+      if (dismissed !== 'true') {
+        setTimeout(() => {
+          const overlay = document.getElementById('daily-update-overlay');
+          if (overlay) overlay.classList.add('open');
+        }, 500);
+      }
+
+      // Add event listeners for closing
+      const closeModel = () => {
+        const overlay = document.getElementById('daily-update-overlay');
+        if (overlay) {
+          overlay.classList.remove('open');
+          // Do NOT remove from DOM so the "Briefing" button can still open it
+          sessionStorage.setItem(`encoreUpdate_${today}`, 'true');
+        }
+      };
+
+      document.getElementById('update-close').addEventListener('click', closeModel);
+      document.getElementById('update-dismiss-btn').addEventListener('click', closeModel);
+
+      // Allow clicking outside the modal to close it as well
+      document.getElementById('daily-update-overlay').addEventListener('click', (e) => {
+        if (e.target.id === 'daily-update-overlay') {
+          closeModel();
+        }
+      });
+    }
+
+    // Initialize daily update
+    renderDailyUpdate(CONTROLLER);
   </script>
 
   <div class="rules-overlay" id="rulesOverlay" onclick="if(event.target===this)this.classList.remove('open')">
