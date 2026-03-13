@@ -2256,17 +2256,17 @@
       // ── STORE DATA ────────────────────────────────────────────────────
       // Fields: id, name, transactions, cardsOpened, associates, participatingAssociates, targetRate
       stores: [
-        { id: "1302", name: "1302 Perimeter", transactions: 250, cardsOpened: 1, associates: 14, participatingAssociates: 0, targetRate: 0.021 },
-        { id: "1319", name: "1319 East Cobb", transactions: 116, cardsOpened: 1, associates: 11, participatingAssociates: 0, targetRate: 0.019 },
-        { id: "6004", name: "6004 Crabtree", transactions: 269, cardsOpened: 11, associates: 13, participatingAssociates: 0, targetRate: 0.02 },
-        { id: "6108", name: "6108 Haywood", transactions: 172, cardsOpened: 2, associates: 9, participatingAssociates: 0, targetRate: 0.021 },
-        { id: "0594", name: "0594 Mayfaire", transactions: 205, cardsOpened: 2, associates: 8, participatingAssociates: 0, targetRate: 0.019 },
-        { id: "1224", name: "1224 Short Pump", transactions: 340, cardsOpened: 4, associates: 13, participatingAssociates: 0, targetRate: 0.02 },
-        { id: "1459", name: "1459 Avalon", transactions: 263, cardsOpened: 0, associates: 15, participatingAssociates: 0, targetRate: 0.02 },
-        { id: "4807", name: "4807 Hanes", transactions: 133, cardsOpened: 4, associates: 8, participatingAssociates: 0, targetRate: 0.019 },
-        { id: "1305", name: "1305 Lenox", transactions: 224, cardsOpened: 2, associates: 16, participatingAssociates: 0, targetRate: 0.021 },
-        { id: "6014", name: "6014 Southpoint", transactions: 214, cardsOpened: 0, associates: 11, participatingAssociates: 0, targetRate: 0.021 },
-        { id: "1321", name: "1321 MOG", transactions: 207, cardsOpened: 2, associates: 10, participatingAssociates: 0, targetRate: 0.021 },
+        { id: "1302", name: "1302 Perimeter", transactions: 385, cardsOpened: 6, associates: 14, participatingAssociates: 0, targetRate: 0.021 },
+        { id: "1319", name: "1319 East Cobb", transactions: 227, cardsOpened: 5, associates: 11, participatingAssociates: 0, targetRate: 0.019 },
+        { id: "6004", name: "6004 Crabtree", transactions: 467, cardsOpened: 16, associates: 13, participatingAssociates: 0, targetRate: 0.02 },
+        { id: "6108", name: "6108 Haywood", transactions: 303, cardsOpened: 3, associates: 9, participatingAssociates: 0, targetRate: 0.021 },
+        { id: "0594", name: "0594 Mayfaire", transactions: 369, cardsOpened: 4, associates: 8, participatingAssociates: 0, targetRate: 0.019 },
+        { id: "1224", name: "1224 Short Pump", transactions: 508, cardsOpened: 4, associates: 13, participatingAssociates: 0, targetRate: 0.02 },
+        { id: "1459", name: "1459 Avalon", transactions: 441, cardsOpened: 1, associates: 15, participatingAssociates: 0, targetRate: 0.02 },
+        { id: "4807", name: "4807 Hanes", transactions: 228, cardsOpened: 9, associates: 8, participatingAssociates: 0, targetRate: 0.019 },
+        { id: "1305", name: "1305 Lenox", transactions: 338, cardsOpened: 3, associates: 16, participatingAssociates: 0, targetRate: 0.021 },
+        { id: "6014", name: "6014 Southpoint", transactions: 396, cardsOpened: 2, associates: 11, participatingAssociates: 0, targetRate: 0.021 },
+        { id: "1321", name: "1321 MOG", transactions: 358, cardsOpened: 3, associates: 10, participatingAssociates: 0, targetRate: 0.021 },
       ],
 
       // ── GM LEADERSHIP DATA ────────────────────────────────────────────
@@ -2276,37 +2276,45 @@
       // slamDunks = Order In Store + Card opened (holy grail)
       // andOnes   = 3+ item baskets with card opened
       associates: [
-        // Carryovers from March 10
-        { name: "Trina M.", storeId: "0594", cardsOpened: 1, slamDunks: 0, andOnes: 1, transactions: 9 },
-        { name: "Toya G.", storeId: "1302", cardsOpened: 1, slamDunks: 0, andOnes: 0, transactions: 9 },
+        // Carryovers from March 10 & 11 (updated)
+        { name: "Trina M.", storeId: "0594", cardsOpened: 2, slamDunks: 0, andOnes: 1, transactions: 9 },
+        { name: "Toya G.", storeId: "1302", cardsOpened: 2, slamDunks: 0, andOnes: 0, transactions: 9 },
         { name: "Ryan S.", storeId: "1305", cardsOpened: 1, slamDunks: 0, andOnes: 0, transactions: 10 },
         { name: "Nicole S.", storeId: "1321", cardsOpened: 1, slamDunks: 0, andOnes: 0, transactions: 12 },
-
-        // Updates for March 11
         { name: "Alazee A.", storeId: "N/A", cardsOpened: 1, slamDunks: 0, andOnes: 0, transactions: 8 },
         { name: "Annie B.", storeId: "6004", cardsOpened: 1, slamDunks: 0, andOnes: 0, transactions: 5 },
         { name: "Tiffany F.", storeId: "6004", cardsOpened: 1, slamDunks: 0, andOnes: 0, transactions: 5 },
         { name: "Kimberly M.", storeId: "6108", cardsOpened: 1, slamDunks: 0, andOnes: 0, transactions: 6 },
         { name: "Madison G.", storeId: "1319", cardsOpened: 1, slamDunks: 0, andOnes: 0, transactions: 9 },
         { name: "Makayla O.", storeId: "6004", cardsOpened: 1, slamDunks: 0, andOnes: 0, transactions: 13 },
-        { name: "Julie A.", storeId: "0594", cardsOpened: 1, slamDunks: 0, andOnes: 0, transactions: 26 },
+        { name: "Julie A.", storeId: "0594", cardsOpened: 2, slamDunks: 0, andOnes: 0, transactions: 26 },
+
+        // Updates for March 12-13
+        { name: "Madeline", storeId: "1319", cardsOpened: 4, slamDunks: 0, andOnes: 4, transactions: 0 },
+        { name: "Anastasia", storeId: "1459", cardsOpened: 1, slamDunks: 0, andOnes: 0, transactions: 0 },
+        { name: "Laquanta", storeId: "6014", cardsOpened: 1, slamDunks: 0, andOnes: 0, transactions: 0 },
+        { name: "Sherri", storeId: "4807", cardsOpened: 1, slamDunks: 0, andOnes: 1, transactions: 0 },
+        { name: "Beth", storeId: "6004", cardsOpened: 1, slamDunks: 0, andOnes: 0, transactions: 0 },
+        { name: "Lewis", storeId: "6004", cardsOpened: 1, slamDunks: 0, andOnes: 0, transactions: 0 },
+        { name: "Aniyah", storeId: "1302", cardsOpened: 1, slamDunks: 0, andOnes: 0, transactions: 0 },
+        { name: "Gleny", storeId: "6004", cardsOpened: 1, slamDunks: 0, andOnes: 0, transactions: 0 },
       ],
 
       // ── DAILY UPDATE MODULE ───────────────────────────────────────────
       dailyUpdate: {
         isActive: true,
-        date: "Wednesday, March 11",
-        headline: "Crabtree Leaders Lock In.",
-        messageText: "Crabtree's entire leadership team is officially on the board for the week! We are seeing incredible individual bursts today, showing that small changes to the checkout approach yield massive results. The Encore club is growing—keep asking every single customer!",
+        date: "Friday, March 13",
+        headline: "Madeline drops 4 And-Ones! East Cobb erupts.",
+        messageText: "The district is catching fire as we head into the weekend! We are seeing momentum shift across the board as teams lock into the behaviors that matter. Huge shoutout to the associates stacking up 'And Ones'—building those 3+ item baskets alongside card opens is how we dominate this tournament!",
         opportunities: [
-          "Crabtree (6004) dominating with 11 cards and full leadership engagement.",
-          "Hanes (4807) continuing strong efficiency at a 3% strike rate.",
-          "Short Pump (1224) maintaining the volume lead with 340 transactions."
+          "Hanes (4807) catching fire with 5 cards off 95 transactions (5.2% capture tier) in the last 48 hours.",
+          "Perimeter (1302) roaring back with 5 recent cards and a strong 3.7% bump.",
+          "Crabtree (6004) maintaining their towering district lead with 16 total cards."
         ],
         topPerformers: [
-          "Alazee A. bursting onto the scene with a 12.5% personal rate.",
-          "Trina M. (0594), Toya G. (1302), & Madison G. (1319) all dealing at 11.11%.",
-          "Ryan S. (1305) close behind at a solid 10% personal rate."
+          "Madeline (1319) completely taking over the game with 4 And-Ones.",
+          "Trina M., Toya G., and Julie A. continuing to pad their stats with another card each.",
+          "Sherri (4807) joining the mix with a clutch And-One of her own."
         ]
       }
     };
